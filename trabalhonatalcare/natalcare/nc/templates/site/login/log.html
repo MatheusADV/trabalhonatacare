@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'log_est.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <header id="titulo">
+        <h1>nCARE</h1>
+        <h4>SUA PESQUISA ACABA AQUI</h2>
+    </header>
+
+    <section id="tipo-conta">
+        <input type="radio" id="log_user" name="radio"> <label for="user"><h2>Usuário</h2></label>
+        <input type="radio" id="log_clin" name="radio"> <label for="clin"><h2>Clínica</h2></label>
+    </section>
+
+    {% if messages %}
+        {% for message in messages %}
+            <script>window.alert("{{ message }}");</script>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" action="{% url 'prologu' %}" id="log-area-user">
+        {% csrf_token %}
+        <input type="text" placeholder="Email" id="email" name="email">
+        <input type="password" placeholder="Senha" id="senha" name="senha">
+        <span><a href="">Esqueci minha senha</a></span>
+        <input type="submit" value="Login">
+        <p>Não possui uma conta? <a href="{% url 'cadastro' %}">Crie sua conta</a></p>
+    </form>
+
+    <form method="POST" action="{% url 'prologc' %}" id="log-area-clin">
+        {% csrf_token %}
+        <input type="text" placeholder="Email" id="email_clin" name="email">
+        <input type="password" placeholder="Senha" id="senha_clin"  name="senha">
+        <span><a href="">Esqueci minha senha</a></span>
+        <input type="submit" value="Login">
+        <p>Não possui uma conta? <a href="{% url 'cadastro' %}">Crie sua conta</a></p>
+    </form>
+
+    <!-- <script src="{% static 'back.js' %}"></script> -->
+
+    <script>
+        var log_user = document.getElementById('log_user');
+        var log_clin = document.getElementById('log_clin');
+        var log_user_area = document.getElementById('log-area-user');
+        var log_clin_area = document.getElementById('log-area-clin');
+
+        log_user.addEventListener('click', function(){
+            if(log_user.checked){
+                log_user_area.style.display = 'flex';
+                log_clin_area.style.display = 'none';
+            }});
+
+        log_clin.addEventListener('click', function(){
+            if(log_clin.checked){
+                log_clin_area.style.display = 'flex';
+                log_user_area.style.display = 'none';
+            }});
+    </script>
+</body>
+</html>

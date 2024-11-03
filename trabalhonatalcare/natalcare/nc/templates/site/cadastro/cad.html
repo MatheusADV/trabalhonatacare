@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'cad_est.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <header id="titulo">
+        <h1>nCARE</h1>
+        <h4>SUA PESQUISA ACABA AQUI</h2>
+    </header>
+
+    <section id="tipo-conta">
+        <input type="radio" id="cad_user" name="radio"> <label for="user"><h2>Usuário</h2></label>
+        <input type="radio" id="cad_clin" name="radio"> <label for="clin"><h2>Clínica</h2></label>
+    </section>
+    {% if messages %}
+        {% for message in messages %}
+            <script>window.alert("{{ message }}");</script>
+        {% endfor %}
+    {% endif %}
+    <form method="POST" action="{% url 'procadu' %}" id="cad-area-user">
+        {% csrf_token %}
+        <input type="text" placeholder="Nome" id="nome_user" name="nome" required>
+        <input type="text" placeholder="Telefone" id="tel_user" name="telefone" required>
+        <input type="text" placeholder="Email" id="email_user" name="email" required>
+        <input type="password" placeholder="Senha" id="senha_user" name="senha" required>
+        <input type="text" placeholder="Logradouro" id="logradouro_user" name="logradouro" required>
+        <input type="text" placeholder="Número" id="numero_user" name="numero" required>
+        <input type="text" placeholder="Complemento" id="complemento_user" name="complemento">
+        <input type="text" placeholder="Bairro" id="bairro_user" name="bairro" required>
+        <input type="text" placeholder="Cidade" id="cidade_user" name="cidade" required>
+        <input type="text" placeholder="Estado" id="estado_user" name="estado" required>
+        <input type="text" placeholder="CEP" id="cep_user" name="cep" required>
+    
+        <input type="submit" value="Cadastrar" id="cad_user">
+    </form>
+
+    <form method="POST" action="{% url 'procadc' %}" id="cad-area-clin">
+        {% csrf_token %}
+        <input type="text" placeholder="Nome" id="nome_clin" name="nome" required>
+        <input type="text" placeholder="Telefone" id="tel_clin" name="telefone" required>
+        <input type="text" placeholder="CNPJ" id="cnpj" name="cnpj" required>
+        <input type="text" placeholder="Email" id="email_clin" name="email" required>
+        <input type="password" placeholder="Senha" id="senha_clin" name="senha" required>
+        <input type="text" placeholder="Logradouro" id="logradouro" name="logradouro" required>
+        <input type="text" placeholder="Número" id="numero" name="numero" required>
+        <input type="text" placeholder="Complemento" id="complemento" name="complemento">
+        <input type="text" placeholder="Bairro" id="bairro" name="bairro" required>
+        <input type="text" placeholder="Cidade" id="cidade" name="cidade" required>
+        <input type="text" placeholder="Estado" id="estado" name="estado" required>
+        <input type="text" placeholder="CEP" id="cep" name="cep" required>
+    
+        <input type="submit" value="Cadastrar" id="cad_clin">
+    </form>
+
+    <!-- <script src="{% static 'back.js' %}"></script> -->
+     <script>
+        var cad_user = document.getElementById('cad_user');
+        var cad_clin = document.getElementById('cad_clin');
+        var cad_user_area = document.getElementById('cad-area-user');
+        var cad_clin_area = document.getElementById('cad-area-clin');
+
+        cad_user.addEventListener('click', function(){
+        if(cad_user.checked){
+            cad_user_area.style.display = 'flex';
+            cad_clin_area.style.display = 'none';
+        }});
+
+        cad_clin.addEventListener('click', function(){
+        if(cad_clin.checked){
+            cad_clin_area.style.display = 'flex';
+            cad_user_area.style.display = 'none';
+        }});
+     </script>
+</body>
+</html>
