@@ -89,4 +89,7 @@ class logclinica(View):
             messages.error(request, 'Clínica não encontrada')
             return render(request, 'site/login/log.html')
 
-        
+
+class menu(View):
+    def get(self, request):
+        return render(request, 'site/menu/menu.html')

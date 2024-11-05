@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ncare</title>
+    <link rel="stylesheet" href="{% static 'menu_est.css' %}">
+</head>
+<body>
+    
+    <div class="container">
+        
+        <div class="search-bar">
+            <h1>nCARE</h1>
+            <input type="text" placeholder="Consultas, nomes, localização...">
+        </div>
+        <div class="map">
+            <div class="location-icon"></div>
+            <div class="mapbox"> 
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d9811.722344425367!2d-35.20290426343806!3d-5.7873386663686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sclinicas!5e0!3m2!1spt-BR!2sbr!4v1730680763431!5m2!1spt-BR!2sbr" width="100%" height="450" frameborder="0" aria-hidden="false" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <h3>Últimos acessos</h3>
+        <div class="last-access">
+            <div class="h3">
+            
+            </div>
+            
+            <div class="clinics">
+                <div class="clinic">
+                    <img src="https://www.senge-pr.org.br/wp-content/uploads/2019/09/case-fabrica-testes-unimed.jpg" alt="Clínica A">
+                    <p>Unimed</p>
+                </div>
+                <div class="clinic">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Oy_G_TSAvNAEXEZrfbmaffO1q_8OZ7YmnA&s" alt="Clínica B">
+                    <p>Clínica Tirol</p>
+                </div>
+                <div class="clinic">
+                    <img src="https://media.licdn.com/dms/image/v2/C4D0BAQGmkZQH6Siajg/company-logo_200_200/company-logo_200_200/0/1639054595979/centro_de_patologia_clinica_logo?e=2147483647&v=beta&t=88NvDPQyrhvsEivQMAyaZer1b7vDIQ4im_D2I1ijRVg" alt="Clínica C">
+                    <p>Clinica de patologia</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

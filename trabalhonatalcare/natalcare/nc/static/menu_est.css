@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3c84d7;
+    margin: 10;
+}
+.container {
+    width: 100%;
+    height: 100%;
+    max-width: 100000px;
+    background-color: #3c84d7;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.search-bar {
+    background-color: #3c84d7;
+    padding: 20px;
+    text-align: center;
+    margin: 0px;
+}
+.search-bar input {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 100px;
+    font-size: 1em;
+}
+
+.map {
+    flex: 1; 
+    background-image: url('https://www.google.com/maps/@-5.7754439,-35.2021385,16z?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.last-access {
+    background-color: white;
+    color: #ffffff;
+    padding: 20px; 
+     display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.last-access h3 {
+    margin-bottom: 105px;
+    height: 100;
+    color: #3c84d7;
+    text-align: center;
+    justify-content: center;
+}
+.clinics {
+    display: flex;
+    justify-content: space-around;
+    margin: %;
+    gap: 95px;
+}
+.clinics .clinic {
+    text-align: center;
+    color: #3c84d7;
+    font-size: larger;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 6%;
+}
+.clinics .clinic img {
+    width: 60px;
+    height: 60px;
+    gap: 40%;
+    margin-top: 0%;
+}
+
+.mapbox{
+    position: relative;
+    width: 600px;
+    height: 500px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+}
+
+.mapbox iframe{
+    width: 600px;
+    height: 500px;
+    border-radius: 50% ;
+    padding: 1px 1px;
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+    position: left;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: left;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h3 {
+    color: white;
+    text-align: center;
+}
+
+
