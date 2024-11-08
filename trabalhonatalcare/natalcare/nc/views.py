@@ -31,7 +31,7 @@ class cadastrousuario(View):
                 messages.error(request, 'Usuário já cadastrado como clínica')
             return render(request, 'site/cadastro/cad.html')
         messages.success(request, 'Usuário cadastrado com sucesso')
-        return render(request, 'site/login/log.html')
+        return render(request, 'site/menu/menu.html')
 
 class cadastroclinica(View):
     def get(self, request):
@@ -60,6 +60,8 @@ class cadastroclinica(View):
             if user:
                 messages.error(request, 'Clínica já cadastrado como usuário')
             return render(request, 'site/cadastro/cad.html')
+        messages.success(request, 'Clínica cadastrado com sucesso')
+        return render(request, 'site/menu/menu.html')
 
 class logusuario(View):
     def get(self, request):
@@ -74,6 +76,7 @@ class logusuario(View):
         except:
             messages.error(request, 'Usuário não encontrado')
             return render(request, 'site/login/log.html')
+        return render(request, 'site/menu/menu.html')
         
 class logclinica(View):
     def get(self, request):
@@ -88,8 +91,18 @@ class logclinica(View):
         except:
             messages.error(request, 'Clínica não encontrada')
             return render(request, 'site/login/log.html')
-
+        return render(request, 'site/menu/menu.html')
 
 class menu(View):
     def get(self, request):
         return render(request, 'site/menu/menu.html')
+    
+    def post(self, request):
+        try:
+            clin = clinica.objects.get(nome=request.POST.get('clin_name').title())
+            if clin == clinica.objects.get(nome=clin.nome):
+                return render(request, 'site/menu/menu.html', {"clinica": clin})
+        except:
+            messages.error(request, 'Clínica não encontrada')
+            return render(request, 'site/menu/menu.html')
+

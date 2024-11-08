@@ -9,12 +9,22 @@
     <link rel="stylesheet" href="{% static 'menu_est.css' %}">
 </head>
 <body>
+
+    {% if messages %}
+        {% for message in messages %}
+            <script>window.alert("{{ message }}");</script>
+        {% endfor %}
+    {% endif %}
     
     <div class="container">
         
         <div class="search-bar">
             <h1>nCARE</h1>
-            <input type="text" placeholder="Consultas, nomes, localização...">
+            <form action="{% url 'pesq' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="Consultas, nomes, localização..." name="clin_name">
+                <!-- <input type="submit" value=""> -->
+            </form>
         </div>
         <div class="map">
             <div class="location-icon"></div>
@@ -22,6 +32,19 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d9811.722344425367!2d-35.20290426343806!3d-5.7873386663686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sclinicas!5e0!3m2!1spt-BR!2sbr!4v1730680763431!5m2!1spt-BR!2sbr" width="100%" height="450" frameborder="0" aria-hidden="false" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
+
+
+        <section>
+            {% if clinica %}
+                {{clinica.nome}} <br>
+                {{clinica.telefone}} <br>
+                {{clinica.email}} <br>
+                {{clinica.endereco.logradouro}}, {{clinica.endereco.numero}} -
+                {% if clinica.endereco.complemento %} {{clinica.endereco.complemento}} - {% endif %} 
+                {{clinica.endereco.bairro}}, {{clinica.endereco.cidade}} - {{clinica.endereco.estado}}, {{clinica.endereco.cep}}
+            {% endif %}
+        </section>
+
         <h3>Últimos acessos</h3>
         <div class="last-access">
             <div class="h3">

@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import cadastrousuario, cadastroclinica, logusuario, logclinica, menu
+from .views import *
 
 urlpatterns = [
     path('cadastro/', cadastrousuario.as_view(), name='cadastro'),
@@ -25,6 +25,7 @@ urlpatterns = [
     path('procadc/', cadastroclinica.as_view(), name='procadc'),
     path('login/', logusuario.as_view(), name='log'),
     path('prologu/', logusuario.as_view(), name='prologu'),
-    path('prologc', logclinica.as_view(), name='prologc'),
-    path('', menu.as_view(), name='menu')
+    path('prologc/', logclinica.as_view(), name='prologc'),
+    path('', menu.as_view(), name='menu'),
+    path('pesq/', menu.as_view(), name="pesq")
 ]
