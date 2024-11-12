@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NatalCare</title>
+    <link rel="stylesheet" href="{% static 'pesq_est.css' %}">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">natal<span>care</span></div>
+        <form action="{% url 'pesq' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Clínica XYZ..." class="search-input" name="pesqi">
+
+            <div class="filter-panel" id="filterPanel">
+                <h3>Filtrar Clínicas</h3>
+                    <select name="esp" id="">
+                        <option value="0">Especialidades</option>
+                        {% for i in esp %}
+                            <option value="{{i.id}}">{{i.nome}}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="plan" id="">
+                        <option value="0">Planos</option>
+                        {% for i in plan %}
+                            <option value="{{i.id}}">{{i.nome}}</option>
+                        {% endfor %}
+                    </select>
+                <button class="apply-filters-button">Aplicar Filtros</button>
+            </div>
+        </form>
+        <button class="filter-button" onclick="toggleFilterPanel()">Filtros</button>
+
+        <span id="prfl-login">
+            <img src="{% static 'imagens_site/perfil.svg' %}" alt="user">
+            {% if request.user.usuario %}
+                <button class="login-button" id="usu" onclick="menuh()">{{request.user.usuario}}</button>
+                <section id="menuh">
+                    <ul>
+                        <li><a href="{% url 'menu' %}">Menu</a></li>
+                        <li><a href="{% url 'perfil' %}">Perfil</a></li>
+                        <li>Pesquisa</li>
+                        <!-- <li>Agendamento</li> -->
+                        <li><a href="{% url 'logoutu' %}">Sair</a></li>
+                    </ul>
+                </section>
+            {% else %}
+                <button class="login-button"><a href="{% url 'log' %}" id="no_usu">Entrar</a></button>
+            {% endif %}
+        </span>
+    </header>
+   
+   
+    <main class="results-section">
+        
+        <div class="results-container">
+            <h2>Resultados:</h2>
+        {% for i in espec %}
+            <a href="{% url 'clind' i.id %}">
+                <div class="result-item">
+                    <div class="result-content">
+                        <span id="topcont">
+                            <img src="{% static 'imagens_site/clingen.svg' %}" alt="Ícone de clínica">
+                            <h3>{{i.nome}}</h3>
+                        </span>
+                        <p>{{i.desc}}</p>
+                    </div>
+                    <button class="favorite-button">⭐</button>
+                </div>
+            </a>
+        {% endfor %}
+
+        {% for i in plano %}
+            <a href="{% url 'clind' i.id %}">
+                <div class="result-item">
+                    <div class="result-content">
+                        <span id="topcont">
+                            <img src="{% static 'imagens_site/clingen.svg' %}" alt="Ícone de clínica">
+                            <h3>{{i.nome}}</h3>
+                        </span>
+                        <p>{{i.desc}}</p>
+                    </div>
+                    <button class="favorite-button">⭐</button>
+                </div>
+            </a>
+        {% endfor %}
+
+        {% for i in inpu %}
+            <a href="{% url 'clind' i.id %}">
+                <div class="result-item">
+                    <div class="result-content">
+                        <span id="topcont">
+                            <img src="{% static 'imagens_site/clingen.svg' %}" alt="Ícone de clínica">
+                            <h3>{{i.nome}}</h3>
+                        </span>
+                        <p>{{i.desc}}</p>
+                    </div>
+                    <button class="favorite-button">⭐</button>
+                </div>
+            </a>
+        {% endfor %}
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-menu">
+            <ul>
+                <li><strong>Início</strong><br>Home<br>Login<br>Cadastro</li>
+                <li><strong>Sobre nós</strong><br>Informações<br>Contato</li>
+                <li><strong>Suporte</strong><br>FAQ<br>Chat</li>
+            </ul>
+        </div>
+        <div class="footer-logo">
+            <p class="brand-name">natalcare</p>
+            <p class="brand-slogan">Sua pesquisa acaba aqui!</p>
+        </div>
+        <div class="footer-social">
+            <!-- LinkedIn SVG -->
+            <a href="#" title="LinkedIn">
+                <img src="{% static 'imagens_site/linkedin.svg' %}" alt="">
+            </a>
+            <!-- Instagram SVG -->
+            <a href="#" title="Instagram">
+                <img src="{% static 'imagens_site/instagram.svg' %}" alt="">
+            </a>
+            <!-- Facebook SVG -->
+            <a href="#" title="Facebook">
+                <img src="{% static 'imagens_site/facebook.svg' %}" alt="">
+            </a>
+            <!-- Twitter SVG -->
+            <a href="#" title="Twitter">
+                <img src="{% static 'imagens_site/x.svg' %}" alt="">
+            </a>
+        </div>
+    </footer>
+    <script>
+        function toggleFilterPanel() {
+            var panel = document.getElementById("filterPanel");
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+
+        var menu = document.getElementById('menuh')
+            var usu = document.getElementById('usu')
+
+            usu.addEventListener('click', () => {
+                menu.style.display = 'flex';
+            })
+    </script>
+</body>
+</html>

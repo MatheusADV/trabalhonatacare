@@ -5,17 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'log_est.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'sen_est.css' %}">
     <title>Document</title>
 </head>
 <body>
     <header id="titulo">
         <h1>natal<span id="care">care</span></h1>
     </header>
-
     <section id="la">
         <section id="tipo-conta">
-            <input type="radio" id="log_user" name="radio" checked> <label for="user"><h2>Usuário</h2></label>
+            <input type="radio" id="log_user" name="radio"> <label for="user"><h2>Usuário</h2></label>
             <input type="radio" id="log_clin" name="radio"> <label for="clin"><h2>Clínica</h2></label>
         </section>
 
@@ -24,21 +23,21 @@
                 <script>window.alert("{{ message }}");</script>
             {% endfor %}
         {% endif %}
-        <form method="POST" action="{% url 'prologu' %}" id="log-area-user">
+
+    
+        <form method="POST" action="{% url 'promsc' %}" id="log-area-user">
             {% csrf_token %}
-            <input type="text" placeholder="E-mail" id="email" name="email">
-            <input type="password" placeholder="Senha" id="senha" name="senha">
-            <span><a href="{% url 'msc' %}">Esqueceu sua senha?</a></span>
-            <input type="submit" value="Entrar">
-            <p>Não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
+            <input type="text" placeholder="Email" id="email" name="email">
+            <input type="password" placeholder="Nova Senha" id="senha" name="nsenha">
+            <input type="password" placeholder="Confirmar Senha" id="senha" name="csenha">
+            <input type="submit" value="Mudar Senha">
         </form>
-        <form method="POST" action="{% url 'prologc' %}" id="log-area-clin">
+        <form method="POST" action="{% url 'promsc' %}" id="log-area-clin">
             {% csrf_token %}
-            <input type="text" placeholder="E-mail" id="email_clin" name="email">
-            <input type="password" placeholder="Senha" id="senha_clin"  name="senha">
-            <span><a href="{% url 'msc' %}">Esqueceu sua senha?</a></span>
-            <input type="submit" value="Entrar">
-            <p>Não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
+            <input type="text" placeholder="Email" id="email" name="email">
+            <input type="password" placeholder="Nova Senha" id="senha" name="nsenha">
+            <input type="password" placeholder="Confirmar Senha" id="senha" name="csenha">
+            <input type="submit" value="Mudar Senha">
         </form>
     </section>
 

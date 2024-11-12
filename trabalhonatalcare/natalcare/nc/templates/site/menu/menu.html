@@ -16,56 +16,89 @@
         {% endfor %}
     {% endif %}
     
-    <div class="container">
         
-        <div class="search-bar">
-            <h1>nCARE</h1>
-            <form action="{% url 'pesq' %}" method="POST">
-                {% csrf_token %}
-                <input type="text" placeholder="Consultas, nomes, localização..." name="clin_name">
-                <!-- <input type="submit" value=""> -->
-            </form>
-        </div>
-        <div class="map">
-            <div class="location-icon"></div>
-            <div class="mapbox"> 
-                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d9811.722344425367!2d-35.20290426343806!3d-5.7873386663686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sclinicas!5e0!3m2!1spt-BR!2sbr!4v1730680763431!5m2!1spt-BR!2sbr" width="100%" height="450" frameborder="0" aria-hidden="false" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-
-
-        <section>
-            {% if clinica %}
-                {{clinica.nome}} <br>
-                {{clinica.telefone}} <br>
-                {{clinica.email}} <br>
-                {{clinica.endereco.logradouro}}, {{clinica.endereco.numero}} -
-                {% if clinica.endereco.complemento %} {{clinica.endereco.complemento}} - {% endif %} 
-                {{clinica.endereco.bairro}}, {{clinica.endereco.cidade}} - {{clinica.endereco.estado}}, {{clinica.endereco.cep}}
+    <header class="header">
+        <div class="logo">natal<span>care</span></div>
+        <a href="{% url 'pesq' %}"><input type="text" placeholder="Clínica XYZ..." class="search-input"></a>
+        <span id="prfl-login">
+            <img src="{% static 'imagens_site/perfil.svg' %}" alt="user">
+            {% if request.user.usuario %}
+                <button class="login-button" id="usu">{{request.user.usuario}}</button>
+                <section id="menuh">
+                    <ul>
+                        <li><a href="{% url 'menu' %}">Menu</a></li>
+                        <li><a href="{% url 'perfil' %}">Perfil</a></li>
+                        <!-- <li>Agendamento</li> -->
+                        <li><a href="{% url 'pesq' %}">Pesquisa</a></li>
+                        <li><a href="{% url 'logoutu' %}">Sair</a></li>
+                    </ul>
+                </section>
+            {% else %}
+                <button class="login-button"><a href="{% url 'log' %}" id="no_usu">Entrar</a></button>
             {% endif %}
-        </section>
+        </span>
+        
+    </header>
 
-        <h3>Últimos acessos</h3>
-        <div class="last-access">
-            <div class="h3">
-            
+
+        <main id="menu-area">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15874.959365045957!2d-35.22050299218751!3d-5.892126899999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2f8bd32d924eb%3A0x4b49e9c033ae4af3!2sClínica%20Sua%20Consulta!5e0!3m2!1spt-BR!2sbr!4v1731278140183!5m2!1spt-BR!2sbr" width="600" height="550" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+            <section id="ulti-acs">
+                <h1>Últimos acessos:</h1>
+                {% for i in hist_usu %}
+                    <a href="{% url 'clind' i.clinica.id %}">
+                        <section id="acu">
+                            <img src="{% static 'imagens_site/clingen.svg' %}" alt="">
+                            <h2>{{i.clinica.nome}}</h2>
+                        </section>
+                    </a>
+                {% endfor %}
+            </section>    
+
+        </main>
+
+        <footer class="footer">
+            <div class="footer-menu">
+                <ul>
+                    <li><strong>Início</strong><br>Home<br>Login<br>Cadastro</li>
+                    <li><strong>Sobre nós</strong><br>Informações<br>Contato</li>
+                    <li><strong>Suporte</strong><br>FAQ<br>Chat</li>
+                </ul>
             </div>
-            
-            <div class="clinics">
-                <div class="clinic">
-                    <img src="https://www.senge-pr.org.br/wp-content/uploads/2019/09/case-fabrica-testes-unimed.jpg" alt="Clínica A">
-                    <p>Unimed</p>
-                </div>
-                <div class="clinic">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-Oy_G_TSAvNAEXEZrfbmaffO1q_8OZ7YmnA&s" alt="Clínica B">
-                    <p>Clínica Tirol</p>
-                </div>
-                <div class="clinic">
-                    <img src="https://media.licdn.com/dms/image/v2/C4D0BAQGmkZQH6Siajg/company-logo_200_200/company-logo_200_200/0/1639054595979/centro_de_patologia_clinica_logo?e=2147483647&v=beta&t=88NvDPQyrhvsEivQMAyaZer1b7vDIQ4im_D2I1ijRVg" alt="Clínica C">
-                    <p>Clinica de patologia</p>
-                </div>
+            <div class="footer-logo">
+                <p class="brand-name">natalcare</p>
+                <p class="brand-slogan">Sua pesquisa acaba aqui!</p>
             </div>
-        </div>
-    </div>
+            <div class="footer-social">
+                <!-- LinkedIn SVG -->
+                <a href="#" title="LinkedIn">
+                    <img src="{% static 'imagens_site/linkedin.svg' %}" alt="">
+                </a>
+                <!-- Instagram SVG -->
+                <a href="#" title="Instagram">
+                    <img src="{% static 'imagens_site/instagram.svg' %}" alt="">
+                </a>
+                <!-- Facebook SVG -->
+                <a href="#" title="Facebook">
+                    <img src="{% static 'imagens_site/facebook.svg' %}" alt="">
+                </a>
+                <!-- Twitter SVG -->
+                <a href="#" title="Twitter">
+                    <img src="{% static 'imagens_site/x.svg' %}" alt="">
+                </a>
+            </div>
+        </footer>
+
+        <script>
+            var menu = document.getElementById('menuh')
+            var usu = document.getElementById('usu')
+
+            usu.addEventListener('click', () => {
+                menu.style.display = 'flex';
+            })
+        </script>
 </body>
 </html>

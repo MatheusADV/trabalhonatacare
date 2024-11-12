@@ -27,5 +27,11 @@ urlpatterns = [
     path('prologu/', logusuario.as_view(), name='prologu'),
     path('prologc/', logclinica.as_view(), name='prologc'),
     path('', menu.as_view(), name='menu'),
-    path('pesq/', menu.as_view(), name="pesq")
+    path('perfil/', perfil.as_view(), name="perfil"),
+    path('properfil/', perfil.as_view(), name="properfil"),
+    path('pesq/', resultados.as_view(), name="pesq"),
+    path('logoutu/', logoutu.as_view(), name="logoutu"),
+    path('msc/', mudar_senha_clin.as_view(), name="msc"),
+    path('promsc/', mudar_senha_clin.as_view(), name="promsc"),
+    path('clind/<int:id>/', clin_dados.as_view(), name="clind")
 ]
