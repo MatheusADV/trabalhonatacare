@@ -101,8 +101,13 @@ main{
     text-align: center;
 }
 
+#convs{
+    text-decoration: none;
+    color: white;
+}
+
 #conversas h1{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #clinicas{
@@ -126,30 +131,155 @@ main{
 
 #nome-clin{
     text-align: center;
+    margin-bottom: 10px;
 }
 
 #area-chat{
-    height: 60vh;
+    padding: 10px;
+    max-height: 55vh;
+    overflow-x: auto;
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: flex-end;
+    background-color: #F0F0F0;
+    border-radius: 12px;
 }
 
 #usumen{
-    background-color: rgb(34, 2, 2);
-    color: aqua;
+    background-color: #027E3F;
+    color: white;
+    height: 50px;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 #clinmen{
-    background-color: aqua;
-    color: rgb(34, 2, 2);
+    background-color: #1E3A5F;
+    color: white;
+    height: 50px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#clinmen, #usumen{
+    border-radius: 10px;
+}
+
+#clinmens, #usumens{
+    padding: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Número de linhas a serem exibidas */
+    -webkit-box-orient: vertical;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 form{
+    margin-top: 30px;
     display: flex;
     align-items: center;
+    width: 100%;
+}
+
+form input[type="text"]{
+    width: 85%;
+    height: 30px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border: none;
+}
+
+input[type="submit"]{
+    width: 15%;
+    height: 30px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border: none;
+    background-color: #3685c3;
+    color: white;
+    cursor: pointer;
+}
+
+.footer {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #1E3A5F;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%; /* Alinha ao 100% da largura */
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.footer-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-menu ul li {
+    margin-bottom: 5px;
+    font-size: 19px;
+    text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+}
+
+.footer-logo .brand-name {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.footer-logo .brand-slogan {
+    font-size: 14px;
+    color: #d3d3d3;
+    margin-top: -5px;
+}
+
+.footer-logo p {
+    font-size: 30px;
+    text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    font-weight: bolder;
+}
+
+.footer-social a {
+    margin: 0 10px;
+    font-size: 25px; /* Ícones maiores */
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease; /* Suaviza a transição ao passar o mouse */
+}
+
+.footer-social a:hover {
+    color: #87CEFA;
+    transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .footer-menu ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .footer-logo {
+        margin-bottom: 15px;
+    }
 }

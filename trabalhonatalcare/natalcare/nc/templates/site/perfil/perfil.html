@@ -106,16 +106,16 @@
 
             {% for i in favo %}
                 <section id="fav">
-                    <span id="topfav">
-                        <span id="titlefav"> 
-                            <img src="{% static 'imagens_site/clingen.svg' %}" alt=""> 
-                            <h2>{{i.clinica}}</h2> 
-                        </span> 
-                        <span id="favimg">
-                            <a href="{% url 'favs' i.clinica.id %}"><img src="{% static 'imagens_site/favorito-pintado.png' %}" alt="" height="30px" width="30px"></a>
-                        </span> 
-                    </span>
-                    <p>{{i.clinica.desc}}</p>
+                        <span id="topfav">
+                            <span id="titlefav">
+                                <img src="{% static 'imagens_site/clingen.svg' %}" alt="">
+                                <h2>{{i.clinica}}</h2>
+                            </span>
+                            <span id="favimg">
+                                <a href="{% url 'favs' i.clinica.id %}"><img src="{% static 'imagens_site/favorito-pintado.png' %}" alt="" height="30px" width="30px"></a>
+                            </span>
+                        </span>
+                        <p>{{i.clinica.desc}}</p>
                 </section>
             {% endfor %}
         </section>

@@ -19,9 +19,7 @@
                 <button class="login-button" id="usu" onclick="menuh()">{{request.user.clinica}}</button>
                 <section id="menuh">
                     <ul>
-                        <li><a href="{% url 'menu' %}">Menu</a></li>
                         <li><a href="{% url 'clined' %}">Perfil</a></li>
-                        <!-- <li>Pesquisa</li> -->
                         <li><a href="{% url 'chatclin' %}">Agendamento</a></li>
                         <li><a href="{% url 'logoutu' %}">Sair</a></li>
                     </ul>
@@ -35,7 +33,7 @@
             <h1>Conversas</h1>
 
             {% for i in conv_iniciada %}
-                <a href="{% url 'prochatclin' i.usuario.id %}">
+                <a href="{% url 'prochatclin' i.usuario.id %}" id="convs">
                     <section id="clinicas">
                         <img src="{% static 'imagens_site/clingen.svg' %}" alt="">
                         <h2>{{i.usuario.nome}}</h2>
@@ -54,9 +52,9 @@
                 <section id="area-chat">
                     {% for i in conversa.mensagens_set.all %}
                         {% if i.remetente.username == request.user.clinica.nome %}
-                            <section id="clinmen">{{i.mensagem}}</section>
+                            <section id="clinmen"><p id="clinmens">{{i.mensagem}}</p></section>
                         {% else %}
-                            <section id="usumen">{{i.mensagem}}</section>
+                            <section id="usumen"><p id="usumens">{{i.mensagem}}</p></section>
                         {% endif %}
                     {% endfor %}
                 </section>
@@ -69,6 +67,38 @@
             {% endif %}
         </section>
     </main>
+
+    <footer class="footer">
+        <div class="footer-menu">
+            <ul>
+                <li><strong>Início</strong><br>Home<br>Login<br>Cadastro</li>
+                <li><strong>Sobre nós</strong><br>Informações<br>Contato</li>
+                <li><strong>Suporte</strong><br>FAQ<br>Chat</li>
+            </ul>
+        </div>
+        <div class="footer-logo">
+            <p class="brand-name">natalcare</p>
+            <p class="brand-slogan">Sua pesquisa acaba aqui!</p>
+        </div>
+        <div class="footer-social">
+            <!-- LinkedIn SVG -->
+            <a href="#" title="LinkedIn">
+                <img src="{% static 'imagens_site/linkedin.svg' %}" alt="">
+            </a>
+            <!-- Instagram SVG -->
+            <a href="#" title="Instagram">
+                <img src="{% static 'imagens_site/instagram.svg' %}" alt="">
+            </a>
+            <!-- Facebook SVG -->
+            <a href="#" title="Facebook">
+                <img src="{% static 'imagens_site/facebook.svg' %}" alt="">
+            </a>
+            <!-- Twitter SVG -->
+            <a href="#" title="Twitter">
+                <img src="{% static 'imagens_site/x.svg' %}" alt="">
+            </a>
+        </div>
+    </footer>
 
 
     <script>
