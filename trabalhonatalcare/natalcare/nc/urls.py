@@ -33,5 +33,13 @@ urlpatterns = [
     path('logoutu/', logoutu.as_view(), name="logoutu"),
     path('msc/', mudar_senha_clin.as_view(), name="msc"),
     path('promsc/', mudar_senha_clin.as_view(), name="promsc"),
-    path('clind/<int:id>/', clin_dados.as_view(), name="clind")
+    path('clind/', clin_dados.as_view(), name="clinc"),
+    path('clind/<int:id>/', clinusu.as_view(), name="clinu"),
+    path('clined/', clinedit.as_view(), name="clined"),
+    path('proclined/', clinedit.as_view(), name="proclined"),
+    path('coment/<int:id>/', comentario.as_view(), name="coment"),
+    path('favs/<int:id>/', favoritos.as_view(), name="favs"),
+    path('chatusu/<int:id>/', chatusu.as_view(), name="chatusu"),
+    path('chatclin/', chatclin.as_view(), name="chatclin"),
+    path('prochatclin/<int:id>', prochatclin.as_view(), name="prochatclin"),
 ]

@@ -49,7 +49,7 @@
             <section id="ulti-acs">
                 <h1>Últimos acessos:</h1>
                 {% for i in hist_usu %}
-                    <a href="{% url 'clind' i.clinica.id %}">
+                    <a href="{% url 'clinu' i.clinica.id %}">
                         <section id="acu">
                             <img src="{% static 'imagens_site/clingen.svg' %}" alt="">
                             <h2>{{i.clinica.nome}}</h2>

@@ -41,7 +41,7 @@
         {% endif %}
         <form class="container" action="{% url 'properfil' %}" method="POST">
             {% csrf_token %}
-            <div class="title">Gerenciamento de Perfil:</div>
+            <div class="title">Gerenciamento de Perfil</div>
             <div class="content">
                 <div class="column">
                     <h2>Dados:</h2>
@@ -67,30 +67,30 @@
                             <option value="{{request.user.usuario.endereco.estado}}">{{request.user.usuario.endereco.estado}}</option>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
-                            <option value="TO">AP</option>
-                            <option value="TO">AM</option>
-                            <option value="TO">BA</option>
-                            <option value="TO">CE</option>
-                            <option value="TO">DF</option>
-                            <option value="TO">ES</option>
-                            <option value="TO">GO</option>
-                            <option value="TO">MA</option>
-                            <option value="TO">MT</option>
-                            <option value="TO">MS</option>
-                            <option value="TO">MG</option>
-                            <option value="TO">PA</option>
-                            <option value="TO">PB</option>
-                            <option value="TO">PR</option>
-                            <option value="TO">PE</option>
-                            <option value="TO">PI</option>
-                            <option value="TO">RJ</option>
-                            <option value="TO">RN</option>
-                            <option value="TO">RS</option>
-                            <option value="TO">RO</option>
-                            <option value="TO">RR</option>
-                            <option value="TO">SC</option>
-                            <option value="TO">SP</option>
-                            <option value="TO">SE</option>
+                            <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="MG">MG</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RS">RS</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="SE">SE</option>
                             <option value="TO">TO</option>
                         </select>
                     </div>
@@ -104,10 +104,20 @@
         <section id="clin_favs">
             <div class="title">Clínicas Favoritas</div>
 
-            <section id="fav">
-                <span id="topfav"><span id="titlefav"> <img src="{% static 'imagens_site/clingen.svg' %}" alt=""> <h2>Clinica X</h2> </span> <span id="favimg"><img src="{% static 'imagens_site/fav_icon.svg' %}" alt="" height="40px" width="40px"></span> </span>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
-            </section>
+            {% for i in favo %}
+                <section id="fav">
+                    <span id="topfav">
+                        <span id="titlefav"> 
+                            <img src="{% static 'imagens_site/clingen.svg' %}" alt=""> 
+                            <h2>{{i.clinica}}</h2> 
+                        </span> 
+                        <span id="favimg">
+                            <a href="{% url 'favs' i.clinica.id %}"><img src="{% static 'imagens_site/favorito-pintado.png' %}" alt="" height="30px" width="30px"></a>
+                        </span> 
+                    </span>
+                    <p>{{i.clinica.desc}}</p>
+                </section>
+            {% endfor %}
         </section>
     </main>
 

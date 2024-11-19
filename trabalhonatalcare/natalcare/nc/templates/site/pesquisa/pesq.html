@@ -60,7 +60,7 @@
         <div class="results-container">
             <h2>Resultados:</h2>
         {% for i in espec %}
-            <a href="{% url 'clind' i.id %}">
+            <a href="{% url 'clinu' i.id %}">
                 <div class="result-item">
                     <div class="result-content">
                         <span id="topcont">
@@ -69,13 +69,12 @@
                         </span>
                         <p>{{i.desc}}</p>
                     </div>
-                    <button class="favorite-button">⭐</button>
                 </div>
             </a>
         {% endfor %}
 
         {% for i in plano %}
-            <a href="{% url 'clind' i.id %}">
+            <a href="{% url 'clinu' i.id %}">
                 <div class="result-item">
                     <div class="result-content">
                         <span id="topcont">
@@ -84,13 +83,12 @@
                         </span>
                         <p>{{i.desc}}</p>
                     </div>
-                    <button class="favorite-button">⭐</button>
                 </div>
             </a>
         {% endfor %}
 
         {% for i in inpu %}
-            <a href="{% url 'clind' i.id %}">
+            <a href="{% url 'clinu' i.id %}">
                 <div class="result-item">
                     <div class="result-content">
                         <span id="topcont">
@@ -99,7 +97,7 @@
                         </span>
                         <p>{{i.desc}}</p>
                     </div>
-                    <button class="favorite-button">⭐</button>
+                    
                 </div>
             </a>
         {% endfor %}
@@ -148,11 +146,11 @@
         }
 
         var menu = document.getElementById('menuh')
-            var usu = document.getElementById('usu')
+        var usu = document.getElementById('usu')
 
-            usu.addEventListener('click', () => {
-                menu.style.display = 'flex';
-            })
+        usu.addEventListener('click', () => {
+            menu.style.display = 'flex';
+        })
     </script>
 </body>
 </html>

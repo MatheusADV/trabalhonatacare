@@ -37,7 +37,7 @@ class clinica(models.Model):
     endereco = models.OneToOneField(endereco, on_delete=models.CASCADE)
     plano = models.ManyToManyField(plano, blank=True)
     especialidades = models.ManyToManyField(especialidades, blank=True)
-    foto = models.ImageField(blank=True, upload_to='imagens_clin/')
+    foto = models.ImageField(blank=True, null=True, default="/batman-resolve-in-the-rain.jpg", upload_to="media")
     desc = models.TextField(blank=True)
 
     def __str__(self):
@@ -51,7 +51,6 @@ class usuario(models.Model):
     senha = models.CharField(max_length=10, unique=True)
     telefone = models.CharField(max_length=11)
     endereco = models.OneToOneField(endereco, on_delete=models.CASCADE)
-    fav_clin = models.ManyToManyField(clinica, blank=True, related_name="clin_fav")
 
     def __str__(self):
         return self.nome
@@ -65,14 +64,43 @@ class historico(models.Model):
         unique_together = ['usuario', 'clinica']
 
     def __str__(self):
-        return self.usuario.nome and self.clinica.nome
+        return f"{self.usuario.nome} -> {self.clinica.nome}"
 
-class comentario(models.Model):
+class favorito(models.Model):
+    usuario = models.ForeignKey(usuario, on_delete=models.CASCADE)
+    clinica = models.ForeignKey(clinica, on_delete=models.CASCADE)
+    data = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ['data']
+        unique_together = ['usuario', 'clinica']
+
+    def __str__(self):
+        return f"{self.usuario.nome} -> {self.clinica.nome}"
+    
+class comentarios(models.Model):
     comentario = models.TextField()
     avaliacao = models.BooleanField()
     usuario = models.ForeignKey(usuario, on_delete=models.CASCADE)
     clinica = models.ForeignKey(clinica, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.comentario
 
+class chat(models.Model):
+    usuario = models.ForeignKey(usuario, on_delete=models.CASCADE)
+    clinica = models.ForeignKey(clinica, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.usuario.nome} -> {self.clinica.nome}"
 
+class mensagens(models.Model):
+    mensagem = models.TextField()
+    data = models.DateTimeField(auto_now_add=True)
+    chat = models.ForeignKey(chat, on_delete=models.CASCADE)
+    remetente = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['data']
+
+    def __str__(self):
+        return self.mensagem

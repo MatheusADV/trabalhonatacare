@@ -9,7 +9,7 @@
 }
 
 body{
-    background-color: #3685CD;
+    background-color: #1E3A5F;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,7 +66,7 @@ header h1{
 
 #cad-area-user{
     padding: 20px;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     background-color: white;

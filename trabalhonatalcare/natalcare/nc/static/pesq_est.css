@@ -10,14 +10,13 @@ body {
     font-family: Krub;
     background-color: #f0f0f0;
     color: #020000;
-    text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
 }
 
 .header {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #357ABD;
+    background-color: #1E3A5F;
     color: white;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -88,7 +87,7 @@ header a{
 }
 
 .filter-button {
-    background-color: #357ABD;
+    background-color: #1E3A5F;
     color: white;
     border:#ffffff;
     border-radius: 10px;
@@ -113,7 +112,8 @@ header a{
 .filter-panel h3 {
     font-size: 18px;
     margin-bottom: 10px;
-    color: #357ABD;
+    color: #1E3A5F;
+    text-shadow: none;
 }
 
 .filter-panel label {
@@ -123,8 +123,20 @@ header a{
     color: #333;
 }
 
+select{
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    background-color: #E6E1E1;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    color: #555555;
+    font-size: 14px;
+}
+
 .apply-filters-button {
-    background-color: #357ABD;
+    background-color: #1E3A5F;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -146,7 +158,6 @@ header a{
     font-size: 40px;
     color: #ffffff;
     margin-bottom: 15px;
-    text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
 }
 
 .result-item {
@@ -172,6 +183,8 @@ a{
     width: 50px;
     height: 50px;
     margin-left: 19px;
+    box-shadow: none;
+    text-shadow: none;
 }
 
 .result-content h3 {
@@ -179,16 +192,18 @@ a{
     color: black;
     margin-bottom: 5px;
     margin-left: 15px;
+    text-shadow: none;
 }
 
 .result-content p {
     color: black;
     font-size: 18px;
     margin-left: 20px;
+    text-shadow: none;
 }
 
 .results-container {
-    background-color: #357ABD;
+    background-color: #1E3A5F;
     padding: 20px;
     border-radius: 15px;
     margin-top: 10px;
@@ -251,15 +266,15 @@ a{
 
 .footer-social a {
     margin: 0 10px;
-    font-size: 25px; /* Ícones maiores */
+    font-size: 25px; 
     color: white;
     text-decoration: none;
-    transition: transform 0.3s ease; /* Suaviza a transição ao passar o mouse */
+    transition: transform 0.3s ease; 
 }
 
 .footer-social a:hover {
     color: #87CEFA;
-    transform: scale(1.1); /* Aumenta o tamanho ao passar o mouse */
+    transform: scale(1.1); 
 }
 
 @media (max-width: 768px) {
